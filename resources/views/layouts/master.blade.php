@@ -10,7 +10,7 @@
     <meta name="rating" content="adult" />
     <meta name="rating" content="RTA-5042-1996-1400-1577-RTA" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/x-icon" href="https://tuk-cdn.s3.amazonaws.com/can-uploader/footer_5_marketing_svg1.svg">
+    <link rel="icon" type="image/x-icon" href="/storage/images/norldarch_logo_small.png">
 
     <title>NorldArch - @yield('title')</title>
 
@@ -76,5 +76,16 @@
 
         });
     </script>
+    <script>
+        var popoverTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="popover"]')
+        );
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+          return new Popover(popoverTriggerEl);
+        });
+    </script>
+
+    <!-- Required popper.js -->
+    <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
 </body>
 </html>

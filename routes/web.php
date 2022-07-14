@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/blogs', function () {
-    return view('blogs.single_blog');
+    return view('blogs.index');
 });

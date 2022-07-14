@@ -47,6 +47,30 @@
         <div id="accordion-open-body-1" class="hidden" aria-labelledby="accordion-open-heading-1">
             <div class="overflow-auto border-gray-200 2xl:container 2xl:mx-auto lg:py-5 lg:px-5 md:py-5 md:px-6 py-9 px-4 max-h-72">
                 <ol class="relative border-l border-gray-200 dark:border-gray-700">
+                    <li class="mb-10 ml-4">
+                        <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <img class="rounded-full shadow-lg" src="/storage/images/mountains.jpg" alt="Thomas Lean image"/>
+                        </span>
+                        <div class="max-w-2xl">
+                            <form class="ml-3" action="">
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                    Add Comment to this blog
+                                </label>
+
+                                <textarea id="comment" rows="2" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="add some comments!..">
+                                </textarea>
+
+                                <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                                    Your comment will help someone to expand.
+                                    <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Become member</a>.
+                                </p>
+
+                                <button type="submit" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium mt-4 text-gray-900 focus:outline-none bg-green-800 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-green-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                    add comment
+                                </button>
+                            </form>
+                        </div>
+                    </li>
                     <livewire:blogs-comment.mini />
                     <livewire:blogs-comment.mini />
                     <livewire:blogs-comment.mini />
@@ -55,3 +79,4 @@
         </div>
     </div>
 </li>
+

@@ -1,86 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreBlogCommentRequest;
-use App\Http\Requests\UpdateBlogCommentRequest;
-use App\Models\BlogComment;
+    use App\Http\Requests\StoreBlogCommentRequest;
 
-class BlogCommentController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    class BlogCommentController extends Controller {
+        /**
+         * Store a newly created resource in storage.
+         *
+         * @param  \App\Http\Requests\StoreBlogCommentRequest  $request
+         * @return \Illuminate\Http\Response
+         */
+        public function store(StoreBlogCommentRequest $request) {
+            user()
+                ->blogComments()
+                ->create($request->validated());
+
+            return redirect()
+                ->back()
+                ->withSucess('Comments submitted successfully');
+        }
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreBlogCommentRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreBlogCommentRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\BlogComment  $blogComment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(BlogComment $blogComment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\BlogComment  $blogComment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(BlogComment $blogComment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateBlogCommentRequest  $request
-     * @param  \App\Models\BlogComment  $blogComment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateBlogCommentRequest $request, BlogComment $blogComment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\BlogComment  $blogComment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(BlogComment $blogComment)
-    {
-        //
-    }
-}

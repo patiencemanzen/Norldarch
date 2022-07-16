@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Manirabona Patience" />
 
-    <meta name="description" content="Full-stack developer with 5+ years of experience in JavaScript, PHP, and SQL including some libraries and frameworks like In JavaScript(React js, Node js, Express Js), and Also MongoDB, PHP (laravel).  I’ve been collaborating and contributing with different Teams and companies to develop their products from ideas up to Marketplace." />
+    <meta name="description" content="" />
     <meta name="rating" content="adult" />
     <meta name="rating" content="RTA-5042-1996-1400-1577-RTA" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="icon" type="image/x-icon" href="/storage/images/norldarch_logo_small.png">
 
     <title>NorldArch - @yield('title')</title>
@@ -76,16 +77,5 @@
 
         });
     </script>
-    <script>
-        var popoverTriggerList = [].slice.call(
-          document.querySelectorAll('[data-bs-toggle="popover"]')
-        );
-        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-          return new Popover(popoverTriggerEl);
-        });
-    </script>
-
-    <!-- Required popper.js -->
-    <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
 </body>
 </html>

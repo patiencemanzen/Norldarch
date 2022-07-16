@@ -9,6 +9,12 @@
     class BlogComment extends Model {
         use HasFactory;
 
+        protected $fillable = [
+            'blog_id',
+            'comment',
+            'user_id'
+        ];
+
         /**
          * Blog like belongs to blog
          *

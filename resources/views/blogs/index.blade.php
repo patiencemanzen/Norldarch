@@ -4,6 +4,6 @@
 
 @section('content')
     <livewire:navbar />
-    <livewire:blogs />
+    <livewire:blogs :blogs="$blogs" />
     <livewire:footer />
 @stop

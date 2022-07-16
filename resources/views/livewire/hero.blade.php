@@ -28,7 +28,7 @@
         </div>
 
         <!-- Main modal -->
-        <livewire:search />
+        <livewire:search :blogs="$blogs" />
 </section>
 <style>
     /* Top menu */

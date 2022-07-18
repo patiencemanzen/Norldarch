@@ -45,4 +45,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
         public function blogCategory(): BelongsTo {
             return $this->belongsTo(BlogCategory::class);
         }
+
+        /**
+         * Check if given blog already exist
+         *
+         * @param Blog $blogId
+         */
+        public static function doesExist(int $blogId) {
+            return Blog::where('id', $blogId)->first() ?? false;
+        }
     }

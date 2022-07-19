@@ -79,12 +79,24 @@
                 <ul id="flowbiteMenu" class="hidden flex-col pt-6 lg:flex-row lg:self-center lg:py-0 lg:flex">
                     @if (Auth::check())
                         <li class="mb-3 lg:px-2 xl:px-3 lg:mb-0">
-                            <a data-modal-toggle="authentication-modal-for-sign-in" data-tooltip-target="tooltip-account-username" class="text-sm font-medium text-gray-900 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-500">
+                            <a  id="avatarButton" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" data-tooltip-target="tooltip-account-username" class="text-sm font-medium text-gray-900 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-500">
                                 {{"@".Auth::user()->username}}
                             </a>
+
                             <div id="tooltip-account-username" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(1186px, -64px);">
                                 You are still logged in as {{Auth::user()->name}}
                                 <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(99px, 0px);"></div>
+                            </div>
+
+                            <!-- Dropdown menu -->
+                            <div id="userDropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                <div class="py-3 px-4 text-sm text-gray-900 dark:text-white">
+                                    <div class="capitalize">{{Auth::user()->name}}</div>
+                                    <div class="font-medium truncate">{{Auth::user()->email}}</div>
+                                </div>
+                                <div class="py-1">
+                                    <a href="{{ route('logout') }}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                                </div>
                             </div>
                         </li>
                     @endif

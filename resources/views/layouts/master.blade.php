@@ -77,5 +77,11 @@
 
         });
     </script>
+
+    <!-- React JS -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    {{-- Blog JS --}}
+    <script src="{{ asset('js/blog.js') }}"></script>
 </body>
 </html>

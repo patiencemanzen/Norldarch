@@ -20,6 +20,9 @@
           @endif
         </div>
     </div>
+    <div class="bg-indigo-900 text-center py-4 lg:px-4">
+        <livewire:alerts.flash />
+    </div>
     <div class="mx-auto w-full max-w-8xl 2xl:container 2xl:mx-auto lg:px-20 md:px-6 py-3 px-4">
         <div class="conatiner flex justify-between items-center ">
             <div class="flex items-center">

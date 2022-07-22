@@ -27,9 +27,13 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
+
 </head>
 <body class="dark:bg-gray-800">
+
     @yield('content')
+
+    <livewire:alerts.cookie />
 
     @livewireScripts
 
@@ -78,10 +82,10 @@
         });
     </script>
 
-    <!-- React JS -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
     {{-- Blog JS --}}
     <script src="{{ asset('js/blog.js') }}"></script>
+
+    <!-- Vue JS -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 </html>

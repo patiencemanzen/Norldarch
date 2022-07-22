@@ -4,7 +4,8 @@
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
-    use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
     class Blog extends Model {
         use HasFactory;
@@ -34,5 +35,23 @@
          */
         public function blogComments(): HasMany {
             return $this->hasMany(BlogComment::class);
+        }
+
+        /**
+         * Blog belongs to blog category
+         *
+         * @return BelongsTo
+         */
+        public function blogCategory(): BelongsTo {
+            return $this->belongsTo(BlogCategory::class);
+        }
+
+        /**
+         * Check if given blog already exist
+         *
+         * @param Blog $blogId
+         */
+        public static function doesExist(int $blogId) {
+            return Blog::where('id', $blogId)->first() ?? false;
         }
     }

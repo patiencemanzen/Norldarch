@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire;
+    namespace App\Http\Livewire;
 
-use Livewire\Component;
+    use Livewire\Component;
 
-class Search extends Component
-{
-    public function render()
-    {
-        return view('livewire.search');
+    class Search extends Component {
+        public $blogs;
+
+        public function render() {
+            return view('livewire.search');
+        }
     }
-}

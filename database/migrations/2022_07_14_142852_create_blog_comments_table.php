@@ -13,8 +13,8 @@
         public function up() {
             Schema::create('blog_comments', function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('users_id');
-                $table->unsignedBigInteger('blogs_id');
+                $table->unsignedBigInteger('user_id');
+                $table->unsignedBigInteger('blog_id');
                 $table->longText('comment');
                 $table->boolean('active_status')->nullable()->default(true);
                 $table->timestamps();

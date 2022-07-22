@@ -13,7 +13,7 @@
         public function up() {
             Schema::create('blogs', function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('blog_categories_id');
+                $table->unsignedBigInteger('blog_category_id');
                 $table->string('title');
                 $table->string('caption');
                 $table->timestamps();

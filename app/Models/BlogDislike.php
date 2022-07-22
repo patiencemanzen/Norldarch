@@ -9,6 +9,12 @@
     class BlogDislike extends Model {
         use HasFactory;
 
+        protected $fillable = [
+            'blog_id',
+            'count',
+            'active_status'
+        ];
+
         /**
          * Blog like belongs to blog
          *
@@ -25,5 +31,16 @@
          */
         public function user(): BelongsTo {
             return $this->belongsTo(User::class);
+        }
+
+        /**
+         * Check if user with blog id already exist in dislike
+         *
+         * @param Blog $blogId
+         */
+        public static function userExistWithBlog(int $blogId) {
+            return BlogDislike::where('user_id', user()->id)
+                        ->where('blog_id', $blogId)
+                        ->first() ?? false;
         }
     }

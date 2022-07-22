@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire;
+    namespace App\Http\Livewire;
 
-use Livewire\Component;
+    use Livewire\Component;
 
-class Hero extends Component
-{
-    public function render()
-    {
-        return view('livewire.hero');
+    class Hero extends Component {
+        public $blogs;
+
+        public function render() {
+            return view('livewire.hero');
+        }
     }
-}

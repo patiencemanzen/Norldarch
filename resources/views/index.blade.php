@@ -4,7 +4,7 @@
 
 @section('content')
     <livewire:navbar />
-    <livewire:hero />
-    <livewire:blogs />
+    <livewire:hero :blogs="$blogs" />
+    <livewire:blogs identifier="index" :blogs="$blogs" />
     <livewire:footer />
 @stop

@@ -13,8 +13,8 @@
         public function up() {
             Schema::create('blog_dislikes', function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('users_id');
-                $table->unsignedBigInteger('blogs_id');
+                $table->unsignedBigInteger('user_id');
+                $table->unsignedBigInteger('blog_id');
                 $table->integer('count');
                 $table->boolean('active_status')->nullable()->default(true);
                 $table->timestamps();

@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Http\Middleware;
+    namespace App\Http\Middleware;
 
-use Illuminate\Auth\Middleware\Authenticate as Middleware;
+    use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
-class Authenticate extends Middleware
-{
-    /**
-     * Get the path the user should be redirected to when they are not authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string|null
-     */
-    protected function redirectTo($request)
+    class Authenticate extends Middleware
     {
-        if (! $request->expectsJson()) {
+        /**
+         * Get the path the user should be redirected to when they are not authenticated.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @return string|null
+         */
+        protected function redirectTo($request) {
+            if ($request->expectsJson()) {
+                return errorResponse('UnAuthorized');
+            }
+
             return route('login');
         }
     }
-}

@@ -4,11 +4,14 @@
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+    use Illuminate\Database\Eloquent\Relations\BelongsTo;
+    use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
     class Blog extends Model {
         use HasFactory;
+
+        protected $fillable = [];
 
         /**
          * Blog hasmany likes
@@ -45,6 +48,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
         public function blogCategory(): BelongsTo {
             return $this->belongsTo(BlogCategory::class);
         }
+
+        /**
+         * Blog hasmany content
+         *
+         * @return HasOne
+         */
+        public function blogContent(): HasOne {
+            return $this->hasOne(BlogContent::class);
+        }
+
 
         /**
          * Check if given blog already exist

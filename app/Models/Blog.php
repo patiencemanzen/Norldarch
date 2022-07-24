@@ -11,7 +11,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
     class Blog extends Model {
         use HasFactory;
 
-        protected $fillable = [];
+        protected $fillable = [
+            'blog_category_id',
+            'title',
+            'caption'
+        ];
 
         /**
          * Blog hasmany likes

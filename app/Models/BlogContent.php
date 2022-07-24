@@ -9,6 +9,11 @@
     class BlogContent extends Model {
         use HasFactory;
 
+        protected $fillable = [
+            'blog_id',
+            'contents',
+        ];
+
         /**
          * Blog content belongs to blog
          *

@@ -14,8 +14,8 @@
             Schema::create('blogs', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('blog_category_id');
-                $table->string('title');
-                $table->string('caption');
+                $table->longText('title');
+                $table->longText('caption');
                 $table->timestamps();
             });
         }

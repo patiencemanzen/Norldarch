@@ -5,7 +5,6 @@
                 <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
 
                 <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{date('d m, Y', strtotime($blog->created_at))}}</time>
-                <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"> - 2 min read</time>
                 <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"> - {{$blog->created_at->diffForHumans()}}</time>
 
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{strtoupper($blog->title)}}</h3>

@@ -5,6 +5,7 @@
     use App\Http\Requests\StoreBlogRequest;
     use App\Http\Requests\UpdateBlogRequest;
     use App\Models\Blog;
+    use App\Models\BlogContent;
 
     class BlogController extends Controller {
         /**
@@ -25,7 +26,14 @@
          * @return \Illuminate\Http\Response
          */
         public function store(StoreBlogRequest $request) {
-            //
+            $blog = Blog::create($request->validated());
+
+            BlogContent::create([
+                'blog_id' => $blog->id,
+                'contents' => $request->validated()['contents']
+            ]);
+
+            return redirect()->back()->with('success', 'your blog published successfully');
         }
 
         /**

@@ -2,8 +2,9 @@
 
     namespace Database\Seeders;
 
-use App\Models\BlogComment;
-use Illuminate\Database\Seeder;
+    use App\Models\BlogComment;
+    use Illuminate\Database\Seeder;
+    use Illuminate\Support\Facades\DB;
 
     class BlogCommentSeeder extends Seeder {
         /**
@@ -12,6 +13,8 @@ use Illuminate\Database\Seeder;
          * @return void
          */
         public function run() {
-            BlogComment::factory()->count(10)->create();
+            DB::table('blog_comments')->truncate();
+
+            BlogComment::factory()->count(1000)->create();
         }
     }

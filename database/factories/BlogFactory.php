@@ -12,7 +12,7 @@
          */
         public function definition() {
             return [
-                'blog_categories' => '1',
+                'blog_category_id' => '1',
                 'title' => $this->faker->realTextBetween(10, 100),
                 'caption' => $this->faker->realText()
             ];

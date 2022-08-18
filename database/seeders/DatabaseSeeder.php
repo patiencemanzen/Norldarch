@@ -12,9 +12,14 @@
          */
         public function run(){
             $this->call([
+                LaratrustSeeder::class,
+                UserSeeder::class,
                 BlogCategorySeeder::class,
                 BlogSeeder::class,
-                BlogCommentSeeder::class
+                BlogCommentSeeder::class,
+                BlogContentSeeder::class,
+                BlogLikeSeeder::class,
+                BlogDislikeSeeder::class
             ]);
         }
     }

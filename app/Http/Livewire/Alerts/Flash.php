@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Flash extends Component
 {
-    protected $listeners = ['flasComponent' => '$refresh'];
+    protected $listeners = ['flashComponent' => '$refresh'];
 
     public function render()
     {

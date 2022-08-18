@@ -2,19 +2,16 @@
 
     namespace Database\Seeders;
 
-    use App\Models\Blog;
+    use App\Models\User;
     use Illuminate\Database\Seeder;
-    use Illuminate\Support\Facades\DB;
 
-    class BlogSeeder extends Seeder {
+    class UserSeeder extends Seeder {
         /**
          * Run the database seeds.
          *
          * @return void
          */
         public function run() {
-            DB::table('blogs')->truncate();
-
-            Blog::factory()->count(10)->create();
+            User::factory()->count(20)->create();
         }
     }

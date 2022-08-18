@@ -2,6 +2,8 @@
 
     namespace Database\Factories;
 
+    use App\Models\Blog;
+    use App\Models\User;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     class BlogLikeFactory extends Factory {
@@ -12,7 +14,10 @@
          */
         public function definition() {
             return [
-                ''
+                'user_id' => User::all()->random()->id,
+                'blog_id' => Blog::all()->random()->id,
+                'count' => 1,
+                'active_status' => true
             ];
         }
     }

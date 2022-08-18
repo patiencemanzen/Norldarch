@@ -28,6 +28,8 @@
         public function store(StoreBlogRequest $request) {
             $blog = Blog::create($request->validated());
 
+            dd($blog);
+
             BlogContent::create([
                 'blog_id' => $blog->id,
                 'contents' => $request->validated()['contents']

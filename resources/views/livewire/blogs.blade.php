@@ -40,7 +40,7 @@
                             </svg>
                         </button>
                         <div id="tooltip-comment-{{$blog->id}}" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(1186px, -64px);">
-                            {{$blog->blogComments->count()}} different users commented on this blog include you
+                            {{$blog->blogComments->count()}} different users commented on this blog
                             <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(99px, 0px);"></div>
                         </div>
 
@@ -64,7 +64,7 @@
                                 @if (Auth::check())
                                     <li class="mb-10 ml-4">
                                         <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                            <img class="rounded-full shadow-lg" src="/storage/images/mountains.jpg" alt="Thomas Lean image"/>
+                                            <img class="rounded-full shadow-lg" src="https://www.genocideresearchhub.org.rw/wp-content/uploads/2021/12/1024px-User-avatar.svg_-600x600.png" alt="Thomas Lean image"/>
                                         </span>
                                         <div class="max-w-2xl">
                                             <form class="ml-3" action="{{ route('post.comments') }}" method="POST">
@@ -98,7 +98,7 @@
                                 @forelse ($blog->blogComments as $comment)
                                     <li class="mb-5 ml-6 max-w-2xl">
                                         <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                            <img class="rounded-full shadow-lg" src="/storage/images/mountains.jpg" alt="Thomas Lean image"/>
+                                            <img class="rounded-full shadow-lg" src="https://www.genocideresearchhub.org.rw/wp-content/uploads/2021/12/1024px-User-avatar.svg_-600x600.png" alt="Thomas Lean image"/>
                                         </span>
                                         <div class="p-4 bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-700 dark:border-gray-600">
                                             <div class="justify-between items-center mb-3 sm:flex">

@@ -30,7 +30,7 @@
 
                     <div id="content-wrapper" class="relative z-20 prose prose-slate mt-8 dark:prose-dark dark:text-gray-300">
                         <h2 class="group flex font-bold text-2xl mb-10 whitespace-pre-wrap" id="overview" style="margin-bottom: 10px">
-                            <span class="">Overview</span>
+                            <span class="">Let brake it down</span>
                         </h2>
 
                         {{$blog->blogContent->contents}}

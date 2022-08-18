@@ -9,6 +9,8 @@
     class BlogCategory extends Model {
         use HasFactory;
 
+        protected $fillable = ['name'];
+
         /**
          * Blog belongs to blog category
          *

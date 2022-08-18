@@ -28,6 +28,8 @@
         }
     </script>
 
+    @yield('additional')
+
 </head>
 <body class="dark:bg-gray-800">
 

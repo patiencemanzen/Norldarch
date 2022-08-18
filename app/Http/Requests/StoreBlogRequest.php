@@ -12,9 +12,10 @@
          */
         public function rules() {
             return [
-                'blog_categories' => ['integer', 'required'],
+                'blog_category_id' => ['integer', 'required'],
                 'title' => ['string', 'required'],
-                'caption' => ['string', 'required']
+                'caption' => ['string', 'required'],
+                'contents' => ['string', 'required']
             ];
         }
     }

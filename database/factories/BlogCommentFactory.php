@@ -2,7 +2,8 @@
 
     namespace Database\Factories;
 
-use App\Models\Blog;
+    use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
     class BlogCommentFactory extends Factory {
@@ -13,7 +14,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
          */
         public function definition() {
             return [
-                'blogs_id' => Blog::all()->random()->id,
+                'user_id' =>  User::all()->random()->id,
+                'blog_id' => Blog::all()->random()->id,
                 'comment' => $this->faker->realText()
             ];
         }

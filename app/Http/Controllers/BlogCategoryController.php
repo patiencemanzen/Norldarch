@@ -32,7 +32,9 @@
          * @return \Illuminate\Http\Response
          */
         public function store(StoreBlogCategoryRequest $request) {
-            //
+            BlogCategory::create($request->validated());
+
+            return redirect()->back()->with('success','Blog category added successfully');
         }
 
         /**

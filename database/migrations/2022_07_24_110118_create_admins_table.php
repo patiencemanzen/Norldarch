@@ -4,18 +4,18 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateBlogContentsTable extends Migration {
+    class CreateAdminsTable extends Migration {
         /**
          * Run the migrations.
          *
          * @return void
          */
         public function up() {
-            Schema::create('blog_contents', function (Blueprint $table) {
+            Schema::create('admins', function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('blog_id');
-                $table->longText('contents');
-                $table->boolean('active_status')->nullable()->default(true);
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->string('password');
                 $table->timestamps();
             });
         }
@@ -26,6 +26,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('blog_contents');
+            Schema::dropIfExists('admins');
         }
     }

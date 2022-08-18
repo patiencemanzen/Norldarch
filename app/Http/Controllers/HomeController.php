@@ -12,7 +12,7 @@
          * @return \Illuminate\Http\Response
          */
         public function index() {
-            $blogs = Blog::all();
+            $blogs = Blog::orderBy('created_at', 'desc')->get();
 
             return view('index', compact('blogs'));
         }

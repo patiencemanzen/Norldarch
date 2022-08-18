@@ -2,12 +2,12 @@
 
     namespace App\Http\Livewire;
 
-use App\Http\Requests\StoreBlogCommentRequest;
-use App\Models\Blog;
+    use App\Http\Requests\StoreBlogCommentRequest;
+    use App\Models\Blog;
     use App\Models\BlogDislike;
     use App\Models\BlogLike;
-use Illuminate\Http\Request;
-use Livewire\Component;
+    use Illuminate\Http\Request;
+    use Livewire\Component;
 
     class Blogs extends Component {
         protected $listeners = [
@@ -30,10 +30,10 @@ use Livewire\Component;
          */
         public function like($blogId) {
             if(!user())
-                return session()->flash('info', 'Login to like this  blog');
+                return \Session::put('info', 'Login to upvote the blog, and many more');
 
             if(!Blog::doesExist($blogId))
-                return session()->flash('error', 'Blog Does not exist');
+                return \Session::put('error', 'Blog Does not exist');
 
             $liked = BlogLike::userExistWithBlog($blogId);
 
@@ -46,9 +46,9 @@ use Livewire\Component;
 
             $this->emit('refreshComponent');
 
-            $this->emitTo('component-to-refresh', 'flasComponent');
+            $this->emitTo('component-to-refresh', 'flashComponent');
 
-            return session()->flash('success', 'Successfully upvoted the blog');
+            return \Session::put('success', 'Successfully upvoted the blog');
         }
 
         /**
@@ -58,8 +58,11 @@ use Livewire\Component;
          * @return \Illuminate\Http\Response
          */
         public function dislike($blogId) {
+            if(!user())
+                return \Session::put('info', 'Login to downvote the blog, and many more');
+
             if(!Blog::doesExist($blogId))
-                return session()->flash('error', 'Blog Does not exist');
+                return \Session::put('error', 'Blog Does not exist');
 
             $disliked = BlogDislike::userExistWithBlog($blogId);
 
@@ -72,7 +75,9 @@ use Livewire\Component;
 
             $this->emit('refreshComponent');
 
-            return session()->flash('success', 'Your downvote recorded successfully');
+            $this->emitTo('component-to-refresh', 'flashComponent');
+
+            return \Session::put('success', 'Your downvote recorded successfully');
         }
 
         /**
@@ -89,7 +94,9 @@ use Livewire\Component;
 
             user()->blogComments()->create($validatedData);
 
-            return session()->flash('success', 'Comments submitted successfully');
+            $this->emitTo('component-to-refresh', 'flashComponent');
+
+            return \Session::put('success', 'Comments posted successfully');
         }
 
         public function render() {

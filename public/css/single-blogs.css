@@ -1,0 +1,29 @@
+
+.single-blog-contents p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.single-blog-contents h1,
+.single-blog-contents h2,
+.single-blog-contents h3,
+.single-blog-contents h4 {
+    color: black;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    font-weight: bold;
+}
+
+.single-blog-contents h2 {
+    font-size: 30px;
+}
+
+.single-blog-contents h3 {
+    font-size: 20px;
+}
+
+.single-blog-contents h4 {
+    font-size: 12px;
+}
+

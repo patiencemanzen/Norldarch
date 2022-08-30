@@ -28,11 +28,10 @@
         public function store(StoreBlogRequest $request) {
             $blog = Blog::create($request->validated());
 
-            dd($blog);
-
             BlogContent::create([
                 'blog_id' => $blog->id,
-                'contents' => $request->validated()['contents']
+                'contents' => $request->validated()['contents'],
+                'active_status' => true
             ]);
 
             return redirect()->back()->with('success', 'your blog published successfully');

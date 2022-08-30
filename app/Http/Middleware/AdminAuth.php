@@ -16,10 +16,8 @@
          * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
          */
         public function handle(Request $request, Closure $next) {
-            if(Auth::user()){
-                if(Auth::user()->hasRole(Roles::ADMIN)){
-                    return $next($request);
-                }
+            if(Auth::user()->hasRole(Roles::ADMIN)){
+                return $next($request);
             }
 
             return redirect(route('login.view'));

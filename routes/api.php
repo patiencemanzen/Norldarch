@@ -1,6 +1,7 @@
 <?php
 
-    use App\Http\Controllers\Api\BlogDislikeController;
+use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\BlogDislikeController;
     use App\Http\Controllers\Api\BlogLikeController;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Route;
@@ -20,7 +21,6 @@
         return $request->user();
     });
 
-
     Route::group(['middleware' => ['auth:api']], function() {
         /**
          * ---------------------------------------------
@@ -30,3 +30,5 @@
         Route::post('/dislike', [BlogDislikeController::class, 'store'])->name('dislike-blog');
         Route::post('/like', [BlogLikeController::class, 'store'])->name('like-blog');
     });
+
+    Route::post('/search-blogs', [BlogController::class, 'searchBlogs'])->name('search-blogs');

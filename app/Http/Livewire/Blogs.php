@@ -6,6 +6,7 @@
     use App\Models\BlogDislike;
     use App\Models\BlogLike;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Session;
     use Livewire\Component;
 
     class Blogs extends Component {
@@ -77,6 +78,15 @@
             $this->emitTo('component-to-refresh', 'flashComponent');
 
             return \Session::put('success', 'Your downvote recorded successfully');
+        }
+
+        public function destroy($blogId) {
+            if(!Blog::doesExist($blogId))
+                return Session::put('error', 'Blog Does not exist');
+
+            Blog::where('id', $blogId)->first()->delete();
+
+            return \Session::put('success', 'Blog successfully deleted');
         }
 
         /**

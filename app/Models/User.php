@@ -2,7 +2,8 @@
 
     namespace App\Models;
 
-    use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Utilities\Constants\Roles;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Relations\HasMany;
     use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -69,5 +70,9 @@
          */
         public function blogDislikes(): HasMany {
             return $this->hasMany(BlogDislike::class);
+        }
+
+        public function isAdministrator() {
+            return $this->roles()->where('name', Roles::ADMIN)->exists();
         }
     }

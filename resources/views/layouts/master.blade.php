@@ -82,6 +82,57 @@
             }
 
         });
+
+        function saveComment(obj) {
+            obj.lastChild.previousSibling.classList.remove('hidden');
+
+            $(document).ready(function() {
+                var data = $(obj.parentNode).serializeArray();
+
+                $.ajax({
+                    type: 'POST',
+                    url: $(obj.parentNode).attr('action'),
+                    data: data,
+                    success: function (response, textStatus, xhr) {
+                        obj.lastChild.previousSibling.classList.add('hidden')
+                        location.reload();
+                    },
+                });
+
+                obj.lastChild.previousSibling.classList.add('hidden')
+            });
+        }
+
+        function searchBlogs(obj) {
+            $(document).ready(function() {
+                data = JSON.stringify({
+                    "name": document.getElementById('search-value').value
+                });
+
+                $.ajax({
+                    url: $(obj).attr('url'),
+                    type: 'POST',
+                    data: data,
+                    dataType: 'json',
+                    success: function (response, textStatus, xhr) {
+                        response.data.forEach(data => {
+                            div = `<div class="bg-white rounded-lg dark:bg-gray-900 p-4 shadow md:flex justify-between" data-v-648b5d7b="" style="cursor: auto;">
+                                        <div>
+                                            <a href="${data.link}" target="_blank" class="text-gray-900 dark:text-white font-bold">
+                                                <h4 class="text-2xl font-semibold" data-v-648b5d7b="">${data.title}</h4>
+                                            </a>
+                                            <p class="my-2 text-lg text-gray-900 dark:text-white" data-v-648b5d7b="">${data.caption}</p>
+                                            <div class="flex items-center mt-4" data-v-648b5d7b="">
+                                                <div class="text-xs uppercase font-bold tracking-wider bg-gray-300 inline-block px-2 py-1 rounded mr-2" data-v-648b5d7b="">${data.category.name}</div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                                document.getElementById('search-results').innerHTML += div;
+                            });
+                        },
+                });
+            });
+        }
     </script>
 
     {{-- Blog JS --}}

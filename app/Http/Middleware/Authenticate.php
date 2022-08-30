@@ -15,7 +15,7 @@
             if ($request->expectsJson()) {
                 return errorResponse('UnAuthorized');
             }
-
-            return route('login');
+            
+            return route('home');
         }
     }

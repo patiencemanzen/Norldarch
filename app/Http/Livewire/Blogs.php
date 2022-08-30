@@ -2,7 +2,6 @@
 
     namespace App\Http\Livewire;
 
-    use App\Http\Requests\StoreBlogCommentRequest;
     use App\Models\Blog;
     use App\Models\BlogDislike;
     use App\Models\BlogLike;

@@ -8,9 +8,9 @@
 
     <script type="text/javascript">
         tinymce.init({
-            selector: '#tinymce-editor',
+            selector: 'textarea#tinymce',
             height: 300,
-            menubar: false,
+            menubar: true,
             plugins: [
                 'advlist autolink lists link image charmap print preview anchor',
                 'searchreplace visualblocks code fullscreen',
@@ -22,6 +22,30 @@
                 'removeformat | help',
             content_css: '//www.tiny.cloud/css/codepen.min.css'
         });
+
+        $(document).ready(function() {
+            var formId = '#save-content-form';
+
+            $(formId).on('submit', function(e) {
+                e.preventDefault();
+
+                var data = $(formId).serializeArray();
+
+                data.push({
+                    name: 'body',
+                    value: tinyMCE.get('tinymce').getContent()
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: $(formId).attr('data-action'),
+                    data: data,
+                    success: function (response, textStatus, xhr) {
+                        location.reload();
+                    },
+                });
+            });
+            });
     </script>
 @stop
 
@@ -89,7 +113,7 @@
 
                 <!-- Main modal -->
                 <div id="blogModel" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
-                    <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                    <div class="relative p-4 w-full max-w-6xl h-full md:h-auto">
                         <!-- Modal content -->
                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                             <!-- Modal header -->
@@ -104,7 +128,7 @@
                             </div>
 
                             <!-- Modal body -->
-                            <form action="{{ route('post.blogs') }}" method="POST" enctype="multipart/form-data">
+                            <form  id="save-content-form" data-action="{{ route('post.blogs') }}" method="POST" enctype="multipart/form-data">
                                 <div class="p-6 space-y-6 overflow-auto max-h-96">
                                     @csrf
 
@@ -127,24 +151,20 @@
                                         <label for="success" class="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">Caption</label>
                                         <input type="text" id="success" name="caption" class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-green-500" placeholder="Success input">
                                     </div>
-                                    <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
-                                        <div class="py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800">
-                                            <label for="comment" class="sr-only">Write you content here</label>
-                                            <textarea
-                                                id="tinymce-editor"
-                                                name="contents"
-                                                rows="4"
-                                                class="px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                                                placeholder="Write a contents......"
-                                                required
-                                            ></textarea>
-                                        </div>
+                                    <div class="py-2 px-4 bg-white rounded-t-lg w-full dark:bg-gray-800">
+                                        <label for="comment" class="sr-only">Write you content here</label>
+                                        <textarea
+                                            id="tinymce"
+                                            rows="4"
+                                            name="contents"
+                                            class="px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                                        ></textarea>
                                     </div>
                                 </div>
 
                                 <!-- Modal footer -->
                                 <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-                                    <button type="submit" name="store.blogs" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Save Changes and Publish</button>
+                                    <button type="submit" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Save Changes and Publish</button>
                                     <button data-modal-toggle="blogModel" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
                                 </div>
                             </form>

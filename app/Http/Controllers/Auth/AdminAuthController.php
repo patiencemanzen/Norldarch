@@ -2,12 +2,14 @@
     namespace App\Http\Controllers\Auth;
 
     use Validator;
-    use Session;
     use App\Http\Controllers\Controller;
     use App\Providers\RouteServiceProvider;
     use Illuminate\Foundation\Auth\AuthenticatesUsers;
     use Illuminate\Http\Request;
     use App\Http\Requests;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
     class AdminAuthController extends Controller {
         /*
@@ -48,19 +50,20 @@
          *
          * @return \Illuminate\Http\Response
          */
-        public function login(Request $request)
-        {
+        public function login(Request $request) {
             $this->validate($request, [
                 'email' => 'required|email',
                 'password' => 'required',
             ]);
 
             if (auth()->guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-                $user = auth()->guard('admin')->user();
+                $user = auth()->guard('admin');
 
-                \Session::put('success','You are Login successfully!!');
+                Session::put('success','You are Login successfully!!');
+
+                Auth::login($user);
+
                 return redirect()->route('dashboard');
-
             } else {
                 return back()->with('error','your username and password are wrong.');
             }
@@ -72,11 +75,10 @@
          *
          * @return \Illuminate\Http\Response
          */
-        public function logout()
-        {
+        public function logout() {
             auth()->guard('admin')->logout();
-            \Session::flush();
-            \Sessioin::put('success','You are logout successfully');
+            Session::flush();
+            Session::put('success','You are logout successfully');
             return redirect(route('adminLogin'));
         }
     }

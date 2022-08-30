@@ -19,7 +19,7 @@
     |
     */
 
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
     Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('single.blog');
@@ -31,11 +31,12 @@
         Route::post('/comments', [BlogCommentController::class, 'store'])->name('post.comments');
 
         Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
-            Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('adminLogout');
+            Route::get('/logout', [AdminAuthController::class, 'logout'])->name('adminLogout');
             Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
             Route::resource('blog-category', BlogCategoryController::class);
             Route::post('/blogs', [BlogController::class, 'store'])->name('post.blogs');
         });
     });
+
 
     require __DIR__.'/auth.php';

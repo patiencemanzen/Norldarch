@@ -12,6 +12,7 @@
         protected $fillable = [
             'blog_id',
             'contents',
+            'active_status'
         ];
 
         /**

@@ -2,8 +2,7 @@
 
     namespace App\Http\Middleware;
 
-use App\Utilities\Constants\Roles;
-use Closure;
+    use Closure;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
 

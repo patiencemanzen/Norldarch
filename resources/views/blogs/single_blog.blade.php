@@ -2,6 +2,10 @@
 
 @section('title') Blogs @stop
 
+@section('additional')
+<link rel="stylesheet" href="{{ asset('css/single-blogs.css') }}">
+@stop
+
 @section('content')
     <livewire:navbar />
 
@@ -29,11 +33,9 @@
 
 
                     <div id="content-wrapper" class="relative z-20 prose prose-slate mt-8 dark:prose-dark dark:text-gray-300">
-                        <h2 class="group flex font-bold text-2xl mb-10 whitespace-pre-wrap" id="overview" style="margin-bottom: 10px">
-                            <span class="">Let brake it down</span>
-                        </h2>
-
-                        {{$blog->blogContent->contents}}
+                        <div class="single-blog-contents">
+                            {!! $blog->blogContent->contents !!}
+                        </div>
                 </div>
             </div>
         </div>

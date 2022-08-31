@@ -18,7 +18,7 @@
                         </svg>
                     </a>
                     <div class="inline-flex rounded-md" role="group" id="app">
-                        <button wire:click="like({{ $blog->id }})" type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-green-500 dark:focus:text-white">
+                        <button wire:click="like({{ $blog->id }})" @if (!Auth::check()) disabled @endif type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-green-500 dark:focus:text-white">
                             {{$blog->blogLikes->count()}}
                             Upvotes
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -40,11 +40,11 @@
                             </svg>
                         </button>
                         <div id="tooltip-comment-{{$blog->id}}" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(1186px, -64px);">
-                            {{$blog->blogComments->count()}} different users commented on this blog
+                            @if ($blog->blogComments->count() == 0) be first to add comment @else {{$blog->blogComments->count()}} different users commented on this blog @endif
                             <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(99px, 0px);"></div>
                         </div>
 
-                        <button wire:click="dislike({{ $blog->id }})" type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-green-500 dark:focus:text-white">
+                        <button wire:click="dislike({{ $blog->id }})" type="button" @if (!Auth::check()) disabled @endif class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-green-500 dark:focus:text-white">
                             {{$blog->blogDislikes->count()}}
                             DownVotes
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

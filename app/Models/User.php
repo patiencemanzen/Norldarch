@@ -2,8 +2,8 @@
 
     namespace App\Models;
 
-use App\Utilities\Constants\Roles;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+    use App\Utilities\Constants\Roles;
+    use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Relations\HasMany;
     use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +12,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Laratrust\Traits\LaratrustUserTrait;
 
     class User extends Authenticatable {
-        use HasApiTokens, HasFactory, Notifiable, LaratrustUserTrait;
+        use LaratrustUserTrait;
+        use HasApiTokens, HasFactory, Notifiable;
 
         /**
          * The attributes that are mass assignable.

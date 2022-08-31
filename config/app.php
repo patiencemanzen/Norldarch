@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'cookie_name' => env('COOKIE_NAME', 'norldarch'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
